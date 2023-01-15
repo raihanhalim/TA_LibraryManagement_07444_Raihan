@@ -2,6 +2,8 @@ package Controller;
 import java.util.ArrayList;
 import Entity.Entity_Anggota;
 import Model.Model_Anggota;
+import javax.swing.table.DefaultTableModel;
+import view.All_Object_Controller;
 
 public class Controller_Anggota {
     public Model_Anggota m_anggota = new Model_Anggota();
@@ -14,6 +16,15 @@ public class Controller_Anggota {
         return m_anggota.getDataAnggota();
     }
     
+    public void insert(String id,String nama,String alamat,String notelp){
+            Entity_Anggota anggota = new Entity_Anggota();
+            anggota.setNo_id(id);
+            anggota.setNama(nama);
+            anggota.setAlamat(alamat);
+            anggota.setNo_telp(notelp);
+            m_anggota.insert(anggota);
+    }
+    
     public void create(Entity_Anggota anggota) {
         m_anggota.create(anggota);
     }
@@ -24,6 +35,25 @@ public class Controller_Anggota {
     
     public void delete(int index) {
         m_anggota.delete(index);
+    }
+    
+    public DefaultTableModel listanggota(){
+        DefaultTableModel dtmdaftaranggota = new DefaultTableModel();
+        Object[] kolom = {"No ID","Nama","Alamat","No Telepon"};
+        dtmdaftaranggota.setColumnIdentifiers(kolom);
+        
+        int size = All_Object_Controller.anggota.view().size();
+        for (int i=0; i<size; i++) {
+            Object [] data = new Object[8];
+            data[0] = All_Object_Controller.anggota.view().get(i).getNo_id();
+            data[1] = All_Object_Controller.anggota.view().get(i).getNama();
+            data[2] = All_Object_Controller.anggota.view().get(i).getAlamat();
+            data[3] = All_Object_Controller.anggota.view().get(i).getNo_telp();
+            
+            dtmdaftaranggota.addRow(data);
+
+         }
+            return dtmdaftaranggota;
     }
     
     public int cek_anggota(String no_id) {

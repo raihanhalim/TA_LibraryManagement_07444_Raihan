@@ -2,6 +2,8 @@ package Controller;
 import java.util.ArrayList;
 import Entity.Entity_Buku;
 import Model.Model_Buku;
+import javax.swing.table.DefaultTableModel;
+import view.All_Object_Controller;
 
 public class Controller_Buku {
     public Model_Buku m_buku = new Model_Buku();
@@ -14,6 +16,17 @@ public class Controller_Buku {
         return m_buku.getDataBuku();
     }
     
+    public void insert(String kodebuku, String judul, String penerbit, String genre, int harga) {
+        Entity_Buku buku = new Entity_Buku();
+        buku.setKode(kodebuku);
+        buku.setJudul(judul);
+        buku.setPenerbit(penerbit);
+        buku.setPenerbit(penerbit);
+        buku.setGenre(genre);
+        buku.setHarga(harga);
+        m_buku.insert(buku);
+    }
+
     public void create(Entity_Buku buku) {
         m_buku.create(buku);
     }
@@ -22,8 +35,36 @@ public class Controller_Buku {
         m_buku.update(index, buku);
     }
     
+    public void update(int index,String kodebuku, String judul, String penerbit, String genre, int harga) {
+        Entity_Buku buku = new Entity_Buku();
+        buku.setKode(kodebuku);
+        buku.setJudul(judul);
+        buku.setPenerbit(penerbit);
+        buku.setPenerbit(penerbit);
+        buku.setGenre(genre);
+        buku.setHarga(harga);
+        m_buku.update(index,buku);
+    }
+
     public void delete(int index) {
         m_buku.delete(index);
+    }
+    
+    public DefaultTableModel listbuku() {
+        DefaultTableModel dtmlistbuku = new DefaultTableModel();
+        Object[] kolom ={"Kode Buku","Judul","Penerbit","Genre","Harga"};
+        dtmlistbuku.setColumnIdentifiers(kolom);
+        int size = All_Object_Controller.buku.view().size();
+        for (int i=0; i<size; i++){
+            Object [] buku =new Object[7];
+            buku[0] = All_Object_Controller.buku.view().get(i).getKode();
+            buku[1] = All_Object_Controller.buku.view().get(i).getJudul();
+            buku[2] = All_Object_Controller.buku.view().get(i).getPenerbit();
+            buku[3] = All_Object_Controller.buku.view().get(i).getGenre();
+            buku[4] = All_Object_Controller.buku.view().get(i).getHarga();
+            dtmlistbuku.addRow(buku);
+        }
+        return dtmlistbuku;
     }
     
     public int cek_buku(String kode) {
