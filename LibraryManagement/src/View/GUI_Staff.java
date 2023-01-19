@@ -1,78 +1,94 @@
-package view;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.Date;
+package View;
+import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
 
 public class GUI_Staff {
-    JFrame LogReg = new JFrame();
+    JFrame staff = new JFrame();
     JLabel top;
-    JButton btnbuku,btnanggota,btnpeminjaman,btnback,btnpengembalian;
+    JButton btnBuku, btnAnggota, btnPeminjaman, btnBack;
     
     public GUI_Staff(){
-        LogReg.setSize(900,700);
-        LogReg.setLayout(null);
-        LogReg.getContentPane().setBackground(Color.BLUE);
-        top = new JLabel("=MENU UTAMA=");
-        top.setBounds(270,10,700,40);
-        top.setFont(new Font("Times New Roman", Font.BOLD,40));
-        LogReg.add(top);
-         
-        btnbuku = new JButton("Data Buku");
-        btnbuku.setBounds(270,150,300,50);
-        btnbuku.setBackground(Color.CYAN);
-        LogReg.add(btnbuku);
+        staff.setSize(600, 400);
+        staff.setLayout(null);
+        staff.getContentPane().setBackground(new Color(102, 179, 255));
+        top = new JLabel("Menu Utama");
+        top.setBounds(188, 10, 224, 50);
+        top.setFont(new Font("Times New Roman", Font.BOLD, 40));
+        top.setForeground(new Color(255, 234, 0));
+        staff.add(top);
         
-        //====== ANGGOTA =========        
-        btnanggota = new JButton("Data Anggota");
-        btnanggota.setBounds(270,250,300,50);
-        btnanggota.setBackground(Color.CYAN);
-        LogReg.add(btnanggota);
+        // Data Buku
+        btnBuku = new JButton("Data Buku");
+        btnBuku.setBounds(150, 105, 300, 40);
+        btnBuku.setBackground(new Color(0, 255, 0));
+        btnBuku.setForeground(new Color(255, 0, 0));
+        btnBuku.setBorder(null);
+        staff.add(btnBuku);
         
-        //====== PEMINJAM =========
-        btnpeminjaman = new JButton("Data Peminjaman");
-        btnpeminjaman.setBounds(270,350,300,50);
-        btnpeminjaman.setBackground(Color.CYAN);
-        LogReg.add(btnpeminjaman);
+        // Data Anggota
+        btnAnggota = new JButton("Data Anggota");
+        btnAnggota.setBounds(150, 165, 300, 40);
+        btnAnggota.setBackground(new Color(0, 255, 0));
+        btnAnggota.setForeground(new Color(255, 0, 0));
+        btnAnggota.setBorder(null);
+        staff.add(btnAnggota);
         
-        //====== PENGEMBALIAN =======
-        btnpengembalian = new JButton("Data Pengembalian");
-        btnpengembalian.setBounds(270,450,300,50);
-        btnpengembalian.setBackground(Color.CYAN);
-        LogReg.add(btnpengembalian);
+        // Data Peminjaman
+        btnPeminjaman = new JButton("Data Peminjaman");
+        btnPeminjaman.setBounds(150, 225, 300, 40);
+        btnPeminjaman.setBackground(new Color(0, 255, 0));
+        btnPeminjaman.setForeground(new Color(255, 0, 0));
+        btnPeminjaman.setBorder(null);
+        staff.add(btnPeminjaman);
         
-        //===== EXIT =====
-        btnback = new JButton("EXIT");
-        btnback.setBounds(30, 600, 100, 30);
-        btnback.setBackground(Color.red);
-        LogReg.add(btnback);
+        // Back
+        btnBack = new JButton("Back");
+        btnBack.setBounds(20, 310, 100, 30);
+        btnBack.setBackground(new Color(0, 255, 0));
+        btnBack.setForeground(new Color(255, 0, 0));
+        btnBack.setBorder(null);
+        staff.add(btnBack);
         
-        LogReg.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        LogReg.setVisible(true);
-        LogReg.setLocationRelativeTo(null);
+        // Close
+        staff.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        staff.setVisible(true);
+        staff.setLocationRelativeTo(null);
         
-        btnback.addActionListener(new ActionListener() {
+        // Action Button Data Buku
+        btnBuku.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                LogReg.dispose();
-                GUI_Login gui = new GUI_Login();
-            }
-        });
-        btnbuku.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                GUI_Buku bukugui = new GUI_Buku();
-            }
-        });
-        
-        btnanggota.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                GUI_Anggota anggotagui = new GUI_Anggota();
+                staff.dispose();
+                GUI_Buku guiBuku = new GUI_Buku();
             }
         });
         
+        // Action Button Data Anggota
+        btnAnggota.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                staff.dispose();
+                GUI_Anggota guiAnggota = new GUI_Anggota();
+            }
+        });
+        
+        // Action Button Data Peminjaman
+        btnPeminjaman.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                staff.dispose();
+                GUI_Peminjaman guiPeminjaman = new GUI_Peminjaman();
+            }
+        });
+        
+        // Action Button Back
+        btnBack.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                staff.dispose();
+                GUI_Login guiLogin = new GUI_Login();
+            }
+        });
     }
 }

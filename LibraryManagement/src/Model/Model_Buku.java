@@ -13,10 +13,6 @@ public class Model_Buku implements Model_Interface {
         return data_buku;
     }
     
-    public void insert(Object x){
-        data_buku.add((Entity_Buku) x);
-    }
-    
     @Override
     public void create(Object x) {
         data_buku.add((Entity_Buku) x);

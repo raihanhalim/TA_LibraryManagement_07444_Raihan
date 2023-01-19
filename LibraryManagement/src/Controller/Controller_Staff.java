@@ -5,7 +5,6 @@ import Model.Model_Staff;
 
 public class Controller_Staff {
     public Model_Staff m_staff = new Model_Staff();
-    int loginStaff = 0;
     
     public Controller_Staff() {
         
@@ -15,35 +14,23 @@ public class Controller_Staff {
         return m_staff.getDataStaff();
     }
     
-    public void insert(Entity_Staff staff){
-        m_staff.insert(staff);
-    }
-    
     public void create(Entity_Staff staff) {
         m_staff.create(staff);
     }
     
-    public void delete(int index) {
-        m_staff.delete(index);
-    }
-    
-    public void dataStaff(){
-        String no_id [] = {"001","002","003"};
-        String nama [] = {"Raihan","Gofur","Halim"};
-        String alamat [] = {"Gubeng","Sidoarjo","Surabaya"};
-        String password [] = {"001","002","003"};
-       
-        for(int i = 0; i<nama.length; i++){
-        m_staff.insert(new Entity_Staff(no_id[i],nama[i],alamat[i],
-                password[i]));
+    public int cekStaff(String id, String password) {
+        int loop = 0;
+        for(Entity_Staff item : m_staff.getDataStaff()) {
+            if(item.getNo_id().equals(id) && item.getPassword().equals(password)){
+                break;
+            } else {
+                loop++;
+            }
         }
-    }
+        return loop;
+    };
     
-    public void cekStaff(String id, String password) {
-        loginStaff = m_staff.cekStaff(id,password);
-     }
-    
-    public Entity_Staff staffEntity(){
-        return m_staff.showDataStaff(loginStaff);
+    public Entity_Staff showDaftarStaff(int index) {
+        return m_staff.getDataStaff().get(index);
     }
 }

@@ -13,10 +13,6 @@ public class Model_Anggota implements Model_Interface {
         return data_anggota;
     }
     
-    public void insert(Object x){
-        data_anggota.add((Entity_Anggota) x);
-    }
-    
     @Override
     public void create(Object x) {
         data_anggota.add((Entity_Anggota) x);

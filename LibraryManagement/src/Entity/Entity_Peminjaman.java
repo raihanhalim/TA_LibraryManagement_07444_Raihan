@@ -3,8 +3,7 @@ package Entity;
 public class Entity_Peminjaman {
     private Entity_Anggota anggota = new Entity_Anggota();
     private Entity_Buku buku = new Entity_Buku();
-    private int tgl_pinjam, tgl_kembali, lama, total;
-    private int no_pinjam;
+    private int no_pinjam, tgl_pinjam, tgl_kembali, lama, total;
     
     public Entity_Peminjaman() {}
     

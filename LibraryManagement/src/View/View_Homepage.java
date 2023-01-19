@@ -474,7 +474,7 @@ public class View_Homepage {
                     if(tgl_kembali > tgl_pinjam) {
                         lama = tgl_kembali - tgl_pinjam;
                     } else {
-                        lama = tgl_pinjam + 31 - tgl_kembali;
+                        lama = tgl_kembali + 31 - tgl_pinjam;
                     }
                     total = lama * c_buku.showDaftarBuku(index_buku).getHarga();
                     Entity_Anggota anggota = c_anggota.searchById(no_id);
